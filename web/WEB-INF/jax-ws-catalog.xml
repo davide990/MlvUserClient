@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/MlvUsers/StudentService?wsdl" uri="wsdl/localhost_8080/MlvUsers/StudentService.wsdl"/>
+    <system systemId="http://localhost:8080/MlvUsers/TeacherService?wsdl" uri="wsdl/localhost_8080/MlvUsers/TeacherService.wsdl"/>
+    <system systemId="http://localhost:8080/MlvCarsService/MlvCarsService?wsdl" uri="wsdl/localhost_8080/MlvCarsService/MlvCarsService.wsdl"/>
+    <system systemId="http://localhost:8080/MlvCarsService/MlvRentalService?wsdl" uri="wsdl/localhost_8080/MlvCarsService/MlvRentalService.wsdl"/>
+</catalog>

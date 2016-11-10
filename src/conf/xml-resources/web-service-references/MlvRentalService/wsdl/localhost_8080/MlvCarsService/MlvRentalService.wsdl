@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://services.mlvCars.upem.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="MlvRentalService" targetNamespace="http://services.mlvCars.upem.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.mlvCars.upem.com/" targetNamespace="http://services.mlvCars.upem.com/" version="1.0">
+
+  <xs:element name="addRental" type="tns:addRental"/>
+
+  <xs:element name="getAllRentals" type="tns:getAllRentals"/>
+
+  <xs:element name="getAllRentalsResponse" type="tns:getAllRentalsResponse"/>
+
+  <xs:element name="getRentalByID" type="tns:getRentalByID"/>
+
+  <xs:element name="getRentalByIDResponse" type="tns:getRentalByIDResponse"/>
+
+  <xs:element name="isVehicleRented" type="tns:isVehicleRented"/>
+
+  <xs:element name="isVehicleRentedResponse" type="tns:isVehicleRentedResponse"/>
+
+  <xs:element name="numberOfPreviousRental" type="tns:numberOfPreviousRental"/>
+
+  <xs:element name="numberOfPreviousRentalResponse" type="tns:numberOfPreviousRentalResponse"/>
+
+  <xs:element name="updateRental" type="tns:updateRental"/>
+
+  <xs:complexType name="getRentalByID">
+    <xs:sequence>
+      <xs:element name="rental_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRentalByIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:rental"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="rental">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="car" type="tns:car"/>
+      <xs:element minOccurs="0" name="carStatusAfterRental" type="xs:string"/>
+      <xs:element minOccurs="0" name="carStatusBeforeRental" type="xs:string"/>
+      <xs:element name="client_id" type="xs:long"/>
+      <xs:element minOccurs="0" name="rentalEnd" type="xs:dateTime"/>
+      <xs:element name="rentalPrice" type="xs:int"/>
+      <xs:element minOccurs="0" name="rentalStart" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="userComment" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="car">
+    <xs:complexContent>
+      <xs:extension base="tns:vehicle">
+        <xs:sequence>
+          <xs:element name="airConditioner" type="xs:boolean"/>
+          <xs:element name="automaticTransmission" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="brand" type="xs:string"/>
+          <xs:element minOccurs="0" name="model" type="xs:string"/>
+          <xs:element minOccurs="0" name="purchaseDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="type" type="tns:carType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="vehicle">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="maxPassengers" type="xs:int"/>
+      <xs:element name="maxSpeed" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRentals">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllRentalsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:rental"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addRental">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rental" type="tns:rental"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="numberOfPreviousRental">
+    <xs:sequence>
+      <xs:element name="vehichleID" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="numberOfPreviousRentalResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateRental">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rental" type="tns:rental"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="isVehicleRented">
+    <xs:sequence>
+      <xs:element name="vehichleID" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="isVehicleRentedResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="carType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SEDAN"/>
+      <xs:enumeration value="COUPE"/>
+      <xs:enumeration value="CONVERTIBLE"/>
+      <xs:enumeration value="MINIVAN"/>
+      <xs:enumeration value="SUV"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getRentalByID">
+    <wsdl:part element="tns:getRentalByID" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRentalByIDResponse">
+    <wsdl:part element="tns:getRentalByIDResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRentals">
+    <wsdl:part element="tns:getAllRentals" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllRentalsResponse">
+    <wsdl:part element="tns:getAllRentalsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="numberOfPreviousRentalResponse">
+    <wsdl:part element="tns:numberOfPreviousRentalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addRental">
+    <wsdl:part element="tns:addRental" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="numberOfPreviousRental">
+    <wsdl:part element="tns:numberOfPreviousRental" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateRental">
+    <wsdl:part element="tns:updateRental" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isVehicleRented">
+    <wsdl:part element="tns:isVehicleRented" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isVehicleRentedResponse">
+    <wsdl:part element="tns:isVehicleRentedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MlvRentalService">
+    <wsdl:operation name="getRentalByID">
+      <wsdl:input message="tns:getRentalByID" name="getRentalByID">
+    </wsdl:input>
+      <wsdl:output message="tns:getRentalByIDResponse" name="getRentalByIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRentals">
+      <wsdl:input message="tns:getAllRentals" name="getAllRentals">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllRentalsResponse" name="getAllRentalsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRental">
+      <wsdl:input message="tns:addRental" name="addRental">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="numberOfPreviousRental">
+      <wsdl:input message="tns:numberOfPreviousRental" name="numberOfPreviousRental">
+    </wsdl:input>
+      <wsdl:output message="tns:numberOfPreviousRentalResponse" name="numberOfPreviousRentalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRental">
+      <wsdl:input message="tns:updateRental" name="updateRental">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="isVehicleRented">
+      <wsdl:input message="tns:isVehicleRented" name="isVehicleRented">
+    </wsdl:input>
+      <wsdl:output message="tns:isVehicleRentedResponse" name="isVehicleRentedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MlvRentalServiceSoapBinding" type="tns:MlvRentalService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getRentalByID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRentalByID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRentalByIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRentals">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllRentals">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllRentalsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRental">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addRental">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="numberOfPreviousRental">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="numberOfPreviousRental">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="numberOfPreviousRentalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRental">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateRental">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="isVehicleRented">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isVehicleRented">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isVehicleRentedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MlvRentalService">
+    <wsdl:port binding="tns:MlvRentalServiceSoapBinding" name="MlvRentalServicePort">
+      <soap:address location="http://localhost:8080/MlvCarsService/MlvRentalService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

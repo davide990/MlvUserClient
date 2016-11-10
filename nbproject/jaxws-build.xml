@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-StudentService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/StudentService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/StudentService" destdir="${build.generated.dir}/jax-wsCache/StudentService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/StudentService/wsdl/localhost_8080/MlvUsers/StudentService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MlvUsers/StudentService?wsdl" xnocompile="true" xendorsed="true" package="com.mlv.client.service.student">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/StudentService/wsdl/localhost_8080/MlvUsers/StudentService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/StudentService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/StudentService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-StudentService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/mlv/client/service/student"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/StudentService"/>
+    </target>
+    <target name="wsimport-client-TeacherService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/TeacherService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TeacherService" destdir="${build.generated.dir}/jax-wsCache/TeacherService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/TeacherService/wsdl/localhost_8080/MlvUsers/TeacherService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MlvUsers/TeacherService?wsdl" xnocompile="true" xendorsed="true" package="com.mlv.client.service.teacher">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/TeacherService/wsdl/localhost_8080/MlvUsers/TeacherService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/TeacherService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/TeacherService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-TeacherService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/mlv/client/service/teacher"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/TeacherService"/>
+    </target>
+    <target name="wsimport-client-MlvCarsService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/MlvCarsService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MlvCarsService" destdir="${build.generated.dir}/jax-wsCache/MlvCarsService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MlvCarsService/wsdl/localhost_8080/MlvCarsService/MlvCarsService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MlvCarsService/MlvCarsService?wsdl" xnocompile="true" xendorsed="true" package="com.mlv.client.service.carservice">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MlvCarsService/wsdl/localhost_8080/MlvCarsService/MlvCarsService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/MlvCarsService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/MlvCarsService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-MlvCarsService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/mlv/client/service/carservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/MlvCarsService"/>
+    </target>
+    <target name="wsimport-client-MlvRentalService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/MlvRentalService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MlvRentalService" destdir="${build.generated.dir}/jax-wsCache/MlvRentalService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MlvRentalService/wsdl/localhost_8080/MlvCarsService/MlvRentalService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/MlvCarsService/MlvRentalService?wsdl" xnocompile="true" xendorsed="true" package="com.mlv.client.service.rentalservice">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MlvRentalService/wsdl/localhost_8080/MlvCarsService/MlvRentalService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/MlvRentalService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/MlvRentalService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-MlvRentalService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/mlv/client/service/rentalservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/MlvRentalService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-StudentService, wsimport-client-TeacherService, wsimport-client-MlvCarsService, wsimport-client-MlvRentalService"/>
+</project>
