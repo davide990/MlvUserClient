@@ -15,7 +15,14 @@
         </ui:define>
         <ui:define name="body">
             <h:form>
-                
+                <p:outputLabel for="car" value="Car" />
+                <p:selectOneMenu id="car" value="#{carBuyController.selected}" converter="carConverter" panelStyle="width:180px"
+                                 effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+                    <f:selectItems value="#{carBuyController.avaibleCars}" var="car" itemLabel="#{car.brand} #{car.model}" itemValue="#{car}" />
+                    <p:column>
+                        <h:outputText value="#{t.brand} #{t.model} (ID ##{t.id})" />
+                    </p:column>
+                </p:selectOneMenu>
             </h:form>
         </ui:define>
     </ui:composition>

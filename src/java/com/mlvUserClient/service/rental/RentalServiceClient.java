@@ -32,6 +32,15 @@ public class RentalServiceClient {
         service.addRental(the_user, rental);
     }
 
+    
+    public static boolean isCarRented(int carID)
+    {
+        MlvRentalService_Service sv = new MlvRentalService_Service();
+        MlvRentalService service = sv.getMlvRentalServicePort();
+        
+        return service.isVehicleRented(carID);
+    }
+    
     public static boolean isRentalValid(com.mlvUserClient.binding.PersonEntity user, Rental rental) {
         PersonEntity the_user = new PersonEntity();
 

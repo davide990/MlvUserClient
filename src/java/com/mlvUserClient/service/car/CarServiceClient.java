@@ -10,6 +10,7 @@ import com.mlv.client.service.carservice.MlvCarsService;
 import com.mlv.client.service.carservice.MlvCarsService_Service;
 import com.mlv.client.service.carservice.Vehicle;
 import com.mlvUserClient.binding.CarEntity;
+import com.mlvUserClient.service.rental.RentalServiceClient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class CarServiceClient {
 
         List<CarEntity> cl = new ArrayList<>();
         for (Vehicle v : service.getAllVehicles()) {
-            if (isCarOnSale(v.getId())) {
+            if (isCarOnSale(v.getId()) && !RentalServiceClient.isCarRented(v.getId())) {
                 cl.add(CarEntity.fromCar((Car) v));
             }
         }

@@ -7,9 +7,9 @@
     <p:outputLabel value="Hello #{loginController.loggedPerson.firstName}"/>
     <br/>
     <br/>
-    <p:commandButton action="#{carRentalController.prepareCreateRental()}" value="Rent a car" ajax="false"/>
+    <p:commandButton action="#{carRentalController.prepareCreateRental}" value="Rent a car" ajax="false"/>
     <br />
-    <p:commandButton action="#{rentalController.prepareList}" value="Buy a car" ajax="false"/>
+    <p:commandButton action="#{carBuyController.prepareCarBuy}" value="Buy a car" ajax="false"/>
     <br/>
     <p:commandButton action="#{loginController.doLogOut}" value="Log out" ajax="false"/>
 </html>
