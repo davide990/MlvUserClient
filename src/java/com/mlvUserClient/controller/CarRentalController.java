@@ -13,6 +13,7 @@ import com.mlvUserClient.login;
 import com.mlvUserClient.service.car.CarServiceClient;
 import com.mlvUserClient.service.rental.RentalServiceClient;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -49,14 +50,22 @@ public class CarRentalController implements Serializable {
 
     public String prepareCreateRental() {
         current = new Rental();
-        avaibleCars = CarServiceClient.getAvaibleCars();
+
+        avaibleCars = new ArrayList<>();
+
+        for (CarEntity c : CarServiceClient.getAvaibleCars()) {
+            if (!CarServiceClient.isCarOnSale(c.getId()) && !c.isSold()) {
+                avaibleCars.add(c);
+            }
+        }
+
         return "CarRental";
     }
 
     public String prepareToCreateRental() {
         current.setRentalPrice(getTotalRentalPrice());
         current.setClientId(login.getLoggedPerson().getId());
-        
+
         Car r = new Car();
         r.setType(CarType.fromValue(car.getType().toString()));
         r.setAirConditioner(car.isAirConditioner());
@@ -68,7 +77,7 @@ public class CarRentalController implements Serializable {
         r.setMaxSpeed(car.getMaxSpeed());
         r.setPurchaseDate(car.getPurchaseDate());
         r.setRentalPriceForDay(car.getRentalPriceForDay());
-        
+
         current.setCar(r);
 
         return "ConfirmPurchaseRental";

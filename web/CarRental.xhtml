@@ -25,11 +25,11 @@
                             <h:outputText value="#{t.brand} #{t.model} (ID ##{t.id})" />
                         </p:column>
                     </p:selectOneMenu>
-                    <h:outputLabel value="#{bundleRental.CreateRentalLabel_rentalStart}" for="rentalStart" />
+                    <h:outputLabel value="Rental start" for="rentalStart" />
                     <p:calendar  id="rentalStart" value="#{carRentalController.rentalStart}" showOn="button" title="#{bundleRental.CreateRentalTitle_rentalStart}"/>
-                    <h:outputLabel value="#{bundleRental.CreateRentalLabel_rentalEnd}" for="rentalEnd" />
+                    <h:outputLabel value="Rental end" for="rentalEnd" />
                     <p:calendar  id="rentalEnd" value="#{carRentalController.rentalEnd}" showOn="button" title="#{bundleRental.CreateRentalTitle_rentalEnd}"/>
-                    <h:outputLabel value="#{bundleRental.CreateRentalLabel_userComment}" for="userComment" />
+                    <h:outputLabel value="User comment" for="userComment" />
                     <p:inputText id="userComment" value="#{carRentalController.current.userComment}" title="#{bundleRental.CreateRentalTitle_userComment}"/>
                 </p:panelGrid>
                 <br />

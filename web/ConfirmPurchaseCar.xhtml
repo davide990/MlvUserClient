@@ -16,18 +16,16 @@
         <ui:define name="body">
             <h:form>
                 <p:growl id="growl" showDetail="true" sticky="true" />
+                <h:outputLabel value="Summary"/>
+                <br/>
                 <p:panelGrid columns="2">
-                    <p:outputLabel for="car" value="Car" />
-                    <p:selectOneMenu id="car" value="#{carBuyController.selected}" converter="carConverter" panelStyle="width:180px"
-                                     effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
-                        <f:selectItems value="#{carBuyController.avaibleCars}" var="car" itemLabel="#{car.brand} #{car.model}" itemValue="#{car}" />
-                        <p:column>
-                            <h:outputText value="#{t.brand} #{t.model} (ID ##{t.id})" />
-                        </p:column>
-                    </p:selectOneMenu>
-                    <br/>
-                    <p:commandButton action="#{carBuyController.prepareToBuySelected}" value="Proceed" ajax="false" />
+                    <p:outputLabel value="Car Model" />
+                    <p:outputLabel value="#{carBuyController.selected.brand} #{carBuyController.selected.model}" />
+                    <p:outputLabel value="Car Price" />
+                    <p:outputLabel value="#{carBuyController.selected.price}" />
                 </p:panelGrid>
+                <br />
+                <p:commandButton action="#{carBuyController.buySelectedCar}" value="Proceed to purchase" ajax="false" />
             </h:form>
         </ui:define>
     </ui:composition>

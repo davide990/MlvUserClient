@@ -57,4 +57,16 @@ public class CarServiceClient {
 
         return CarEntity.fromCar(service.getCarByID(id));
     }
+
+    public static void buyCar(int userID, int carID) {
+        MlvCarsService_Service sv = new MlvCarsService_Service();
+        MlvCarsService service = sv.getMlvCarsServicePort();
+        service.buyCar(userID, carID);
+    }
+
+    public static boolean validateCarPurchase(int userID, int carID) {
+        MlvCarsService_Service sv = new MlvCarsService_Service();
+        MlvCarsService service = sv.getMlvCarsServicePort();
+        return service.validateCarPurchase(userID, carID);
+    }
 }

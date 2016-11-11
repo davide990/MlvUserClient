@@ -26,9 +26,11 @@ public class CarEntity extends Car {
         e.setPurchaseDate(c.getPurchaseDate());
         e.setType(c.getType());
         e.setRentalPriceForDay(c.getRentalPriceForDay());
+        e.setPrice(c.getPrice());
+        e.setSold(c.isSold());
         return e;
     }
-    
+
     public static Car toCar(CarEntity c) {
         Car e = new Car();
         e.setAirConditioner(c.isAirConditioner());
@@ -40,10 +42,11 @@ public class CarEntity extends Car {
         e.setMaxPassengers(c.getMaxPassengers());
         e.setPurchaseDate(c.getPurchaseDate());
         e.setType(c.getType());
+        e.setPrice(c.getPrice());
+        e.setSold(c.isSold());
         return e;
     }
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 3;
