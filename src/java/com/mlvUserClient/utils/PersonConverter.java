@@ -6,8 +6,6 @@ package com.mlvUserClient.utils;
  * and open the template in the editor.
  */
 
-
-
 import com.mlvUserClient.binding.PersonEntity;
 import com.mlvUserClient.service.user.UserServiceClient;
 import javax.faces.component.UIComponent;

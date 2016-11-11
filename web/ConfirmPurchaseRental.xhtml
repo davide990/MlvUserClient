@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Main"></h:outputText>
+        </ui:define>
+        <ui:define name="leftBar">
+            <ui:include src="leftBar.xhtml"/>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <h:outputLabel value="Summary"/>
+                <br/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Car Model" />
+                    <p:outputLabel value="#{carRentalController.car.brand} #{carRentalController.car.model}" />
+                    <h:outputLabel value="Rental start"/>
+                    <h:outputLabel value="#{carRentalController.current.rentalStart}"/>
+                    <h:outputLabel value="Rental end"/>
+                    <h:outputLabel value="#{carRentalController.current.rentalEnd}"/>
+                    <h:outputLabel value="User comment"/>
+                    <h:outputLabel value="#{carRentalController.current.userComment}"/>
+                    <h:outputLabel value="Rental price"/>
+                    <h:outputLabel value="#{carRentalController.current.rentalPrice}" />
+                </p:panelGrid>
+                <br />
+                <p:commandButton action="#{carRentalController.create}" value="Proceed to purchase" ajax="false" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

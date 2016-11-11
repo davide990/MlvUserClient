@@ -10,9 +10,7 @@ import com.mlvUserClient.login;
 import com.mlvUserClient.service.user.UserServiceClient;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -24,13 +22,35 @@ import javax.inject.Named;
 public class LoginController implements Serializable {
 
     private List<PersonEntity> avaibleUsers;
+    private PersonEntity selectedUser;
 
-    public String prepareLogin()
-    {
+    public String prepareLogin() {
         avaibleUsers = UserServiceClient.retrieveMLVUsers();
         return "Login";
     }
-    
+
+    public String doLogin() {
+        setLoggedPerson(selectedUser);
+
+        return "UserMainPage";
+    }
+
+    public String doLogOut() {
+        setLoggedPerson(null);
+        return "Login";
+    }
+
+    public PersonEntity getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(PersonEntity selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+
+    public void setAvaibleUsers(List<PersonEntity> avaibleUsers) {
+        this.avaibleUsers = avaibleUsers;
+    }
 
     public String getUserType(PersonEntity e) {
         return UserServiceClient.getUserType(e);
@@ -38,10 +58,6 @@ public class LoginController implements Serializable {
 
     public List<PersonEntity> getAvaibleUsers() {
         return avaibleUsers;
-    }
-
-    public void setAvaibleUsers(List<PersonEntity> avaibleUsers) {
-        this.avaibleUsers = avaibleUsers;
     }
 
     public PersonEntity getLoggedPerson() {

@@ -11,7 +11,7 @@
         <h:form>
             <p:panelGrid columns="2" style="width: 180px">
                 <p:outputLabel value="User Name"/>
-                <p:selectOneMenu id="advanced" value="#{loginController.loggedPerson}" converter="personConverter" panelStyle="width:180px"
+                <p:selectOneMenu id="advanced" value="#{loginController.selectedUser}" converter="personConverter" panelStyle="width:180px"
                                  effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
                     <f:selectItems value="#{loginController.avaibleUsers}" var="user" itemLabel="#{user.lastName} #{user.firstName}" itemValue="#{user}" />
                     <p:column>
@@ -22,7 +22,7 @@
                     </p:column>
                 </p:selectOneMenu>
                 <p:outputLabel/>
-                <p:commandButton value="Login"/>
+                <p:commandButton value="Login" action="#{loginController.doLogin}" ajax="false"/>
             </p:panelGrid>
 
 

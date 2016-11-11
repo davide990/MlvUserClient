@@ -26,6 +26,7 @@ public class PersonEntity extends Person {
         p.setEmail(s.getEmail());
         p.setFirstName(s.getFirstName());
         p.setLastName(s.getLastName());
+        p.setIban(s.getIban());
         p.setId(s.getId());
         return p;
     }
@@ -36,6 +37,7 @@ public class PersonEntity extends Person {
         p.setEmail(s.getEmail());
         p.setFirstName(s.getFirstName());
         p.setLastName(s.getLastName());
+        p.setIban(s.getIban());
         p.setId(s.getId());
         return p;
     }

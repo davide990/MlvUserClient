@@ -15,7 +15,10 @@
         </ui:define>
         <ui:define name="body">
             <h:form>
-                
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Hello!"/>
+                </p:panelGrid>
             </h:form>
         </ui:define>
     </ui:composition>
